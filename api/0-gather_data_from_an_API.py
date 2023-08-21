@@ -1,16 +1,16 @@
 #!/usr/bin/python3
 """Task 0"""
 
-from sys import argv
 import requests
+from sys import argv
 
 if __name__ == '__main__':
+    todos = 'https://jsonplaceholder.typicode.com/todos/?userId={}'
+    users = 'https://jsonplaceholder.typicode.com/users/{}'
     text = 'Employee {} is done with tasks({}/{}):'
     id_ = int(argv[1])  # para el ID
-    todos_ = requests.get(
-        'https://jsonplaceholder.typicode.com/todos/?userId={}'.format(id_)).json()
-    users_ = requests.get(
-        'https://jsonplaceholder.typicode.com/users/{}'.format(id_)).json()
+    todos_ = requests.get(todos.format(id_)).json()
+    users_ = requests.get(users.format(id_)).json()
     num_of_done_tasks = 0
     total_tasks = 0
     for id1 in todos_:
